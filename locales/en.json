@@ -1,0 +1,7 @@
+{
+  "hello": "Hello, {name}!",
+  "language": "Language",
+  "dashboard": "Dashboard",
+  "users": "Users",
+  "settings": "Settings"
+}
