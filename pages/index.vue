@@ -24,10 +24,10 @@ const data = [
     <h1 class="text-2xl font-semibold">{{ $t('dashboard') }}</h1>
   
     <div class="grid grid-cols-1">
-      <Card>
+      <Card class="shadow-sm">
         <CardHeader class="flex flex-col gap-2">
           <CardDescription>{{ $t('total_transaction') }}</CardDescription>
-          <CardTitle class="text-4xl">{{amountTransaction}}</CardTitle>
+          <CardTitle class="text-5xl">{{amountTransaction}}</CardTitle>
         </CardHeader>
         <CardContent>
           <AreaChart
