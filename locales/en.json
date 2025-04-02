@@ -3,5 +3,10 @@
   "language": "Language",
   "dashboard": "Dashboard",
   "users": "Users",
-  "settings": "Settings"
+  "settings": "Settings",
+  "orders": "Orders",
+  "light": "Light",
+  "dark": "Dark",
+  "system": "System",
+  "total_transaction": "Total Transaction"
 }

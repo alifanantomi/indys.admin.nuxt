@@ -3,5 +3,10 @@
   "language": "Bahasa",
   "dashboard": "Beranda",
   "users": "Pengguna",
-  "settings": "Pengaturan"
+  "settings": "Pengaturan",
+  "orders": "Pesanan",
+  "light": "Cerah",
+  "dark": "Gelap",
+  "system": "Sistem",
+  "total_transaction": "Total Transaksi"
 }

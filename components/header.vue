@@ -7,7 +7,10 @@ import { LANG } from '@/lib/types/i18n'
 
 const { setLocale, t } = useI18n()
 
-const lang = ref<boolean>(false)
+const lang = useCookie<boolean>('lang', {
+  default: () => false,
+  maxAge: 60 * 60 * 24 * 365,
+})
 
 const toggleLang = () => {
   lang.value = !lang.value
@@ -25,6 +28,10 @@ const menuList = ref([
     href: '/'
   },
   {
+    name: 'orders',
+    href: '/orders'
+  },
+  {
     name: 'users',
     href: '/users'
   },
@@ -34,10 +41,18 @@ const menuList = ref([
   }
 ])
 
+onMounted(() => {
+  if (lang.value) {
+    setLocale(LANG.ENGLISH)
+  } else {
+    setLocale(LANG.INDONESIA)
+  }
+})
+
 </script>
 
 <template>
-  <div class="flex justify-between items-center py-2 px-8 border-b-[1px]">
+  <div class="flex justify-between items-center px-12 py-4 border-b-[1px]">
     <div class="flex items-center gap-6">
       <h1 class="text-lg font-semibold">Indys Food</h1>
 

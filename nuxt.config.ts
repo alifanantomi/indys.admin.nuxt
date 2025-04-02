@@ -3,11 +3,16 @@ export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   devtools: { enabled: true },
   modules: [
-    '@nuxtjs/tailwindcss', 
-    'shadcn-nuxt', 
+    '@nuxtjs/tailwindcss',
+    'shadcn-nuxt',
     '@pinia/nuxt',
     '@nuxtjs/i18n',
-    '@nuxtjs/color-mode'
+    '@nuxtjs/color-mode',
+    ['@nuxtjs/google-fonts', {
+      families: {
+        Inter: true,
+      }
+    }]
   ],
   shadcn: {
     /**
