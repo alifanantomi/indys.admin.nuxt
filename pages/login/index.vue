@@ -1,6 +1,3 @@
-<script lang="ts">
-export const description = 'A login page with form and image.'
-</script>
 <script setup lang="ts">
 
 </script>
