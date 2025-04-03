@@ -14,8 +14,9 @@ definePageMeta({
   
     <div class="flex-1 grid grid-cols-1">
       <Card class="flex flex-col shadow-sm">
-        <CardHeader class="flex flex-col gap-2 border-b-[1px]">
-          <CardTitle>{{ $t('total_transaction') }}</CardTitle>
+        <CardHeader class="flex flex-col border-b-[1px]">
+          <CardTitle>April 2, 2025</CardTitle>
+          <CardDescription>Wednesday</CardDescription>
         </CardHeader>
         <div class="flex-1 flex">
           <div class="flex-1 border-r-[1px]">
