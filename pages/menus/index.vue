@@ -8,7 +8,7 @@ definePageMeta({
 
 <template>
   <div class="h-full flex flex-col gap-4">
-    <h1 class="text-2xl font-semibold">{{ $t('users') }}</h1>
+    <h1 class="text-2xl font-semibold">{{ $t('menus') }}</h1>
   
     <div class="flex-1 grid grid-cols-1">
       <Card class="flex flex-col shadow-sm">
@@ -16,7 +16,7 @@ definePageMeta({
           <FiltersHeader />
         </CardHeader>
         <div class="flex-1 flex">
-          <UsersTable />
+          <MenusTable />
         </div>
       </Card>
     </div>

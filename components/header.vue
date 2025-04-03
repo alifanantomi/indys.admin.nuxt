@@ -32,6 +32,10 @@ const menuList = ref([
     href: '/orders'
   },
   {
+    name: 'menus',
+    href: '/menus'
+  },
+  {
     name: 'users',
     href: '/users'
   },
