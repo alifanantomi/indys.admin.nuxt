@@ -4,6 +4,7 @@ import { AreaChart } from '~/components/ui/chart-area';
 
 definePageMeta({
   layout: "dashboard",
+  middleware: "auth"
 })
 
 const amountTransaction = ref<number | null>(30000000)

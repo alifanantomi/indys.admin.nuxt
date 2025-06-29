@@ -1,5 +1,16 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  ssr: false,
+  app:{
+    head: {
+      title: 'Indys Food',
+    },
+  },
+  runtimeConfig: {
+    public: {
+      apiBase: process.env.NUXT_BASE_URL
+    }
+  },
   compatibilityDate: '2024-11-01',
   devtools: { enabled: true },
   modules: [
@@ -12,7 +23,7 @@ export default defineNuxtConfig({
       families: {
         Inter: true,
       }
-    }]
+    }],
   ],
   shadcn: {
     /**
@@ -30,5 +41,5 @@ export default defineNuxtConfig({
   },
   colorMode: {
     classSuffix: ''
-  }
+  },
 })

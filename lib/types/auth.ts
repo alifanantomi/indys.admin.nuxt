@@ -1,18 +1,25 @@
-export enum UserRole {
-  SUPERADMIN = 'SUPERADMIN',
-  ADMIN = 'ADMIN',
-  USER = 'USER'
-}
-
 export interface User {
   id: number
-  name: string
+  access: UserRole
+  username: string
   email: string
-  role: UserRole
+  phoneNumber: string
+  provider: string
+  suspended: string
+  suspendedDate: string
+  verified: string
+  image: string
+  token: string
 }
 
 export interface AuthResponse {
-  user: User
-  token: string
+  data: User
   message?: string
+  code?: number
+}
+
+export enum UserRole {
+  USER,
+  ADMIN,
+  DRIVER
 }

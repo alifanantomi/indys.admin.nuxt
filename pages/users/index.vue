@@ -1,8 +1,10 @@
 <script setup lang="ts">
+import { Plus } from 'lucide-vue-next';
 import { Card, CardHeader } from '~/components/ui/card';
 
 definePageMeta({
-  layout: 'dashboard'
+  layout: 'dashboard',
+  middleware: 'auth'
 })
 </script>
 
@@ -13,7 +15,10 @@ definePageMeta({
     <div class="flex-1 grid grid-cols-1">
       <Card class="flex flex-col shadow-sm">
         <CardHeader class="flex flex-col border-b-[1px]">
-          <FiltersHeader />
+          <FiltersHeader
+            :onSearch="() => {}"
+            :action="{ title: 'New User', icon: Plus, onClick(value) {}}"
+          />
         </CardHeader>
         <div class="flex-1 flex">
           <UsersTable />

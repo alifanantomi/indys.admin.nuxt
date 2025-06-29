@@ -1,6 +1,5 @@
 import { defineStore, skipHydrate } from "pinia";
 import type { AuthResponse, User, UserRole } from "@/lib/types/auth";
-import { toast } from "~/components/ui/toast";
 
 export const useAuthStore = defineStore("auth", () => {
   const user = useCookie<User | null>("user", { 
@@ -15,11 +14,14 @@ export const useAuthStore = defineStore("auth", () => {
   const error = ref<string | null>(null);
 
   const login = async (credentials: { email: string; password: string }) => {
+    const config = useRuntimeConfig()
+
     isLoading.value = true;
     error.value = null;
     
     try {
-      const { data, error: fetchError } = await useFetch<AuthResponse>("/api/auth/login", {
+      const { data, error: fetchError } = await useFetch<AuthResponse>("/v1/auth/login", {
+        baseURL: config.public.apiBase,
         method: "POST",
         body: credentials,
       });
@@ -29,12 +31,10 @@ export const useAuthStore = defineStore("auth", () => {
       }
 
       if (data.value) {
-        user.value = data.value.user;
-        token.value = data.value.token || "";
+        const userResponse = data.value.data
 
-        toast({
-          description: 'Berhasil login'
-        })
+        user.value = userResponse;
+        token.value = data.value.data.token || "";
 
         return data.value;
       }
@@ -88,7 +88,7 @@ export const useAuthStore = defineStore("auth", () => {
   };
 
   const hasRole = (requiredRoles: UserRole[]) => {
-    return user.value ? requiredRoles.includes(user.value.role) : false;
+    return user.value ? requiredRoles.includes(user.value.access) : false;
   };
 
   return {
@@ -99,7 +99,7 @@ export const useAuthStore = defineStore("auth", () => {
     login,
     fetchUser,
     logout,
-    hasRole,
     isAuthenticated: computed(() => !!user.value && !!token.value),
+    hasRole
   };
 });
