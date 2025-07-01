@@ -18,6 +18,12 @@ export interface AuthResponse {
   code?: number
 }
 
+export interface UserResponse {
+  data: User[]
+  message?: string
+  code?: number
+}
+
 export enum UserRole {
   USER,
   ADMIN,

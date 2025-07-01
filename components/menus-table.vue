@@ -8,6 +8,14 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table'
+import { useMenuStore } from '~/store/menu';
+
+const { isLoading, menus, fetchMenus } = useMenuStore()
+
+onMounted(async () => {
+  console.log("ON MOUNTED")
+  await fetchMenus()
+})
 </script>
 
 <template>
@@ -34,16 +42,23 @@ import {
       </TableRow>
     </TableHeader>
     <TableBody>
-      <TableRow>
-        <TableCell class="font-semibold ps-6">
-          Ayam Bakar
-        </TableCell>
-        <TableCell>Makanan Berat</TableCell>
-        <TableCell>-</TableCell>
-        <TableCell>Available</TableCell>
-        <TableCell>80000</TableCell>
-        <TableCell class="pe-6"></TableCell>
-      </TableRow>
+      <template v-if="isLoading">
+        <TableRow>
+          <TableCell>Loading...</TableCell>
+        </TableRow>
+      </template>
+      <template v-else>
+        <TableRow v-for="menu in menus" :key="menu.id">
+          <TableCell class="font-semibold ps-6">
+            {{ menu.name }}
+          </TableCell>
+          <TableCell>{{ menu.categories.map((v) => v.name).join(', ') }}</TableCell>
+          <TableCell>{{ menu.description }}</TableCell>
+          <TableCell>{{ menu.available ? 'Available' : 'Not Available' }}</TableCell>
+          <TableCell>{{ menu.price }}</TableCell>
+          <TableCell class="pe-6"></TableCell>
+        </TableRow>
+      </template>
     </TableBody>
   </Table>
 </template>

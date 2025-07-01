@@ -8,6 +8,11 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table'
+import { useTransactionStore } from '~/store/transaction';
+
+const { transactions, fetchTransactions } = useTransactionStore()
+
+fetchTransactions()
 </script>
 
 <template>
@@ -32,12 +37,12 @@ import {
       </TableRow>
     </TableHeader>
     <TableBody>
-      <TableRow>
+      <TableRow v-for="transaction in transactions" :key="transaction.id">
         <TableCell class="font-semibold ps-6">
-          John Smith
+          {{ transaction.food.name }}
         </TableCell>
-        <TableCell>0001</TableCell>
-        <TableCell>Ayam Bakar, Ayam Goreng, Es Teh</TableCell>
+        <TableCell>{{ transaction.id }}</TableCell>
+        <TableCell>{{ transaction.food.name }}</TableCell>
         <TableCell>Delivery</TableCell>
         <TableCell>Waiting for courier</TableCell>
         <TableCell class="pe-6"></TableCell>

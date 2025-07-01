@@ -8,6 +8,11 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table'
+import { useUserStore } from '~/store/user';
+
+const { users, fetchUsers } = useUserStore()
+
+fetchUsers()
 </script>
 
 <template>
@@ -16,9 +21,6 @@ import {
     <TableHeader>
       <TableRow>
         <TableHead class="ps-6">
-          Name
-        </TableHead>
-        <TableHead>
           Email
         </TableHead>
         <TableHead>
@@ -30,12 +32,9 @@ import {
       </TableRow>
     </TableHeader>
     <TableBody>
-      <TableRow>
-        <TableCell class="font-semibold ps-6">
-          John Smith
-        </TableCell>
-        <TableCell>john@mail.com</TableCell> 
-        <TableCell>USER</TableCell> 
+      <TableRow v-for="user in users" :key="user.id">
+        <TableCell class="font-semibold ps-6">{{ user.email }}</TableCell> 
+        <TableCell>{{ user.access }}</TableCell> 
         <TableCell>Confirmed</TableCell> 
       </TableRow>
     </TableBody>

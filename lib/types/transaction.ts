@@ -56,3 +56,9 @@ export interface Transaction {
   totalPrice: number;
   createdAt: string;
 }
+export interface Menu extends Food {}
+export interface MenuResponse {
+  data: Menu[];
+  code?: number;
+  message: string;
+}
